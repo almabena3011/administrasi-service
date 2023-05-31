@@ -2,12 +2,7 @@ const { Proposal } = require('../../../models');
 
 module.exports = async (req, res) => {
     try {
-        const batchId = req.params.batchId;
-        const proposals = await Proposal.findAll({
-            where: {
-                batchId: batchId
-            }
-        });
+        const proposals = await Proposal.findAll();
         res.status(200).json({
             status: 'success',
             data: proposals

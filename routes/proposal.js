@@ -6,7 +6,7 @@ const verifyToken = require('../middleware/verifyToken');
 
 router.post('/', verifyToken, uploadMiddleware, proposalHandler.createProposal);
 router.get('/:batchId', proposalHandler.getProposalsByBatchId);
-// router.get('/', proposalHandler.getAllProposal);
+router.get('/', proposalHandler.getAllProposal);
 // router.get('/:id', proposalHandler.getProposal);
 // router.get('/approved-proposal', proposalHandler.getApprovedProposals);
 
