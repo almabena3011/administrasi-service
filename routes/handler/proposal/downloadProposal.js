@@ -11,7 +11,14 @@ module.exports = async (req, res) => {
             });
         }
         const file = proposal.proposal_path;
-        res.download(file); // Mengirim file sebagai response
+        // Mendapatkan ekstensi file
+        const fileExtension = file.split('.').pop();
+
+        // Mengatur nama file baru
+        const newFileName = `Proposal_${proposal.nama_mahasiswa}.${fileExtension}`;
+
+        res.download(file, newFileName); // Mengirim file sebagai response dengan nama file yang disesuaikan
+
 
     } catch (error) {
         console.error(error); // Print error to console for debugging
