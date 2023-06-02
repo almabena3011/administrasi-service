@@ -5,6 +5,7 @@ const getApprovedProposals = require('./getApprovedProposals');
 const getProposalsByBatchId = require('./getProposalsByBatchId');
 const approveProposal = require('./approveProposal');
 const rejectProposal = require('./rejectProposal');
+const downloadProposal = require('./downloadProposal');
 
 module.exports = {
     createProposal,
@@ -13,5 +14,6 @@ module.exports = {
     getApprovedProposals,
     getProposalsByBatchId,
     approveProposal,
-    rejectProposal
+    rejectProposal,
+    downloadProposal
 }
