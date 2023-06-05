@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const uploadMiddleware = require('./multerConfig');
+const uploadMiddleware = require('./multerPdfConfig');
 const proposalHandler = require('./handler/proposal');
 const verifyToken = require('../middleware/verifyToken');
 

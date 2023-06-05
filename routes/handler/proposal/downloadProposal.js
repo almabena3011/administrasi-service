@@ -13,10 +13,8 @@ module.exports = async (req, res) => {
         const file = proposal.proposal_path;
         // Mendapatkan ekstensi file
         const fileExtension = file.split('.').pop();
-
         // Mengatur nama file baru
         const newFileName = `Proposal_${proposal.nama_mahasiswa}.${fileExtension}`;
-
         res.download(file, newFileName); // Mengirim file sebagai response dengan nama file yang disesuaikan
 
 
