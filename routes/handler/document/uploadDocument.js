@@ -6,11 +6,11 @@ const documentSchema = {
     document_title: {
         type: "string",
         empty: false,
-        min: 15,
-        max: 60,
+        min: 5,
+        max: 30,
         messages: {
-            stringMin: "The document title should have at least 15 words.",
-            stringMax: "The document title should have no more than 60 words."
+            stringMin: "Judul dokumen minimal harus 5 karakter",
+            stringMax: "Judul dokumen tidak boleh lebih dari 30 karakter"
         }
     },
     batchId: {
@@ -26,7 +26,7 @@ const documentSchema = {
 }
 
 module.exports = async (req, res) => {
-
+    console.log(req.body, req.file.path);
     const { document_title, document_description, batchId } = req.body;
     const filepath = req.file.path;
 
@@ -35,7 +35,7 @@ module.exports = async (req, res) => {
     const validationResponse = check({ document_title, batchId });
 
     if (validationResponse !== true) {
-        return res.status(400).json({ status: 'error', error: validationResponse });
+        return res.status(400).json({ status: 'error', error: validationResponse[0].message });
     }
 
     try {

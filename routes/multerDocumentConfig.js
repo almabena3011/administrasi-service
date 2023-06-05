@@ -30,16 +30,24 @@ const upload = multer({
     limits: {
         fileSize: 10 * 1024 * 1024  // Limit file size to 10MB
     }
-}).single('dokumen_proposal');
+}).single('dokumen_administrasi');
 
 const uploadMiddleware = (req, res, next) => {
     upload(req, res, function (err) {
         if (err instanceof multer.MulterError) {
+            console.log(err.message)
             return res.status(500).json(err.message);
         } else if (err) {
             console.log(err.message);
             return res.status(500).json(err.message);
         }
+
+        // Check if no file was received
+        if (!req.file) {
+            console.log("No file received");
+            return res.status(400).json("Tidak ada file yang diterima");
+        }
+
         console.log('berhasil melewati middleware');
         next();
     });

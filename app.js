@@ -11,8 +11,8 @@ const documentRouter = require('./routes/document');
 
 const app = express();
 
-app.use(logger('dev'));
 app.use(cors());
+app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 app.use(cookieParser());
