@@ -6,6 +6,9 @@ const getProposalsByBatchId = require('./getProposalsByBatchId');
 const approveProposal = require('./approveProposal');
 const rejectProposal = require('./rejectProposal');
 const downloadProposal = require('./downloadProposal');
+const assignJumlahPenilai = require('./assignJumlahPenilai');
+const assignDosenPenilai = require('./assignDosenPenilai');
+const getPenilai = require('./getPenilai');
 
 module.exports = {
     createProposal,
@@ -15,5 +18,8 @@ module.exports = {
     getProposalsByBatchId,
     approveProposal,
     rejectProposal,
-    downloadProposal
+    downloadProposal,
+    assignJumlahPenilai,
+    assignDosenPenilai,
+    getPenilai
 }

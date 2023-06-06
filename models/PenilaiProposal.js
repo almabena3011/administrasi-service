@@ -2,12 +2,12 @@ const { DataTypes, Model } = require('sequelize');
 const moment = require('moment');
 
 module.exports = (sequelize) => {
-    class Proposal extends Model {
+    class PenilaiProposal extends Model {
         static associate(models) {
 
         }
     }
-    Proposal.init(
+    PenilaiProposal.init(
         {
             id: {
                 type: DataTypes.INTEGER,
@@ -15,55 +15,26 @@ module.exports = (sequelize) => {
                 autoIncrement: true,
                 allowNull: false
             },
-            mahasiswaId: {
+            proposalId: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
             },
-            batchId: {
+            dosenId: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
             },
-            nama_mahasiswa: {
+            nama_dosen: {
                 type: DataTypes.STRING,
-                allowNull: false,
+                allowNull: true,
             },
-            nim: {
-                type: DataTypes.STRING,
-                allowNull: false,
-            },
-            angkatan: {
+            nilai: {
                 type: DataTypes.INTEGER,
-                allowNull: false,
-            },
-            prodi: {
-                type: DataTypes.STRING,
                 allowNull: true,
             },
-            jenis_program: {
-                type: DataTypes.ENUM('Magang', 'Studi Independen'),
-                allowNull: false,
-            },
-            proposal_path: {
-                type: DataTypes.STRING,
-                allowNull: true,
-            },
-            surat_rekomendasi_path: {
-                type: DataTypes.STRING,
-                allowNull: true,
-            },
-            status_approval: {
-                type: DataTypes.ENUM('Menunggu', 'Ditolak', 'Disetujui'),
-                allowNull: false,
-                defaultValue: 'Menunggu'
-            },
-            is_suratrekomendasi_generated: {
+            is_input_score: {
                 type: DataTypes.BOOLEAN,
                 allowNull: false,
                 defaultValue: false
-            },
-            averageSkor: {
-                type: DataTypes.INTEGER,
-                allowNull: true,
             },
             createdAt: {
                 type: DataTypes.DATE,
@@ -82,13 +53,13 @@ module.exports = (sequelize) => {
         },
         {
             sequelize,
-            modelName: 'Proposal',
-            tableName: 'proposals',
+            modelName: 'PenilaiProposal',
+            tableName: 'penilai_proposal',
             timestamps: true,
         }
     );
 
-    return Proposal;
+    return PenilaiProposal;
 };
 
 
