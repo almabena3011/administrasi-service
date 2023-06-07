@@ -7,7 +7,6 @@ module.exports = async (req, res) => {
     const { jenis_program, batchId } = req.body;
     const filepath = req.file.path;
     const userId = req.user.data.user.id;
-    console.log(userId);
     try {
         const mahasiswa = await getMahasiswaByAuthId(userId);
         console.log(mahasiswa);
@@ -16,6 +15,7 @@ module.exports = async (req, res) => {
             batchId: batchId,
             nama_mahasiswa: mahasiswa.nama,
             nim: mahasiswa.nim,
+            prodi: mahasiswa.Prodi.nama_prodi,
             angkatan: mahasiswa.angkatan,
             jenis_program: jenis_program,
             proposal_path: filepath,
