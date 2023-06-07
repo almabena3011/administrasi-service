@@ -34,9 +34,29 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: true,
       },
+      nik: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
+      ipk: {
+        type: Sequelize.FLOAT,
+        allowNull: true,
+      },
+      sks_total: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+      },
+      current_semester: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+      },
       jenis_program: {
         type: Sequelize.ENUM('Magang', 'Studi Independen'),
         allowNull: false,
+      },
+      averageSkor: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
       },
       proposal_path: {
         type: Sequelize.STRING,
@@ -55,10 +75,6 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         allowNull: false,
         defaultValue: false
-      },
-      averageSkor: {
-        type: Sequelize.INTEGER,
-        allowNull: true,
       },
       createdAt: {
         type: Sequelize.DATE,

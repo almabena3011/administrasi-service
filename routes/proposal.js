@@ -13,6 +13,7 @@ router.put('/:id/reject', proposalHandler.rejectProposal);
 router.put('/:id/generate-surat-rekomendasi', proposalHandler.generateSuratRekomendasi);
 router.get('/:id/detail', proposalHandler.getProposal);
 router.get('/:id/download', proposalHandler.downloadProposal);
+router.get('/:id/unduh-surat-rekomendasi', proposalHandler.unduhSuratRekomendasi);
 router.get('/approved-proposals', proposalHandler.getApprovedProposals);
 router.get('/:proposalId/penilai', proposalHandler.getPenilai);
 

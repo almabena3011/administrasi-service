@@ -39,9 +39,29 @@ module.exports = (sequelize) => {
                 type: DataTypes.STRING,
                 allowNull: true,
             },
+            nik: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
+            ipk: {
+                type: DataTypes.FLOAT,
+                allowNull: false,
+            },
+            sks_total: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+            },
+            current_semester: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+            },
             jenis_program: {
                 type: DataTypes.ENUM('Magang', 'Studi Independen'),
                 allowNull: false,
+            },
+            averageSkor: {
+                type: DataTypes.INTEGER,
+                allowNull: true,
             },
             proposal_path: {
                 type: DataTypes.STRING,
@@ -60,10 +80,6 @@ module.exports = (sequelize) => {
                 type: DataTypes.BOOLEAN,
                 allowNull: false,
                 defaultValue: false
-            },
-            averageSkor: {
-                type: DataTypes.INTEGER,
-                allowNull: true,
             },
             createdAt: {
                 type: DataTypes.DATE,

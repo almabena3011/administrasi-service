@@ -9,6 +9,7 @@ const downloadProposal = require('./downloadProposal');
 const assignDosenPenilai = require('./assignDosenPenilai');
 const getPenilai = require('./getPenilai');
 const generateSuratRekomendasi = require('./generateSuratRekomendasi');
+const unduhSuratRekomendasi = require('./unduhSuratRekomendasi');
 
 module.exports = {
     createProposal,
@@ -21,5 +22,6 @@ module.exports = {
     downloadProposal,
     assignDosenPenilai,
     getPenilai,
-    generateSuratRekomendasi
+    generateSuratRekomendasi,
+    unduhSuratRekomendasi
 }
