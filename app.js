@@ -9,7 +9,7 @@ const indexRouter = require('./routes/index');
 const proposalRouter = require('./routes/proposal');
 const documentRouter = require('./routes/document');
 const penilaiRouter = require('./routes/penilai');
-
+const sptjmRouter = require('./routes/sptjm');
 
 const app = express();
 
@@ -24,5 +24,6 @@ app.use('/', indexRouter);
 app.use('/proposal', proposalRouter);
 app.use('/document', documentRouter);
 app.use('/penilai', penilaiRouter);
+app.use('/sptjm', sptjmRouter);
 
 module.exports = app;

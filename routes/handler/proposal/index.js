@@ -3,6 +3,7 @@ const getProposal = require('./getProposal');
 const getAllProposal = require('./getAllProposal');
 const getApprovedProposals = require('./getApprovedProposals');
 const getProposalsByBatchId = require('./getProposalsByBatchId');
+const getAllProposalByMahasiswaId = require('./getAllProposalByMahasiswaId');
 const approveProposal = require('./approveProposal');
 const rejectProposal = require('./rejectProposal');
 const downloadProposal = require('./downloadProposal');
@@ -17,6 +18,7 @@ module.exports = {
     getAllProposal,
     getApprovedProposals,
     getProposalsByBatchId,
+    getAllProposalByMahasiswaId,
     approveProposal,
     rejectProposal,
     downloadProposal,
