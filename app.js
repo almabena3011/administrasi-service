@@ -10,6 +10,7 @@ const proposalRouter = require('./routes/proposal');
 const documentRouter = require('./routes/document');
 const penilaiRouter = require('./routes/penilai');
 const sptjmRouter = require('./routes/sptjm');
+const transkripNilaiRouter = require('./routes/transkrip_nilai');
 
 const app = express();
 
@@ -25,5 +26,7 @@ app.use('/proposal', proposalRouter);
 app.use('/document', documentRouter);
 app.use('/penilai', penilaiRouter);
 app.use('/sptjm', sptjmRouter);
+app.use('/transkip_nilai', transkripNilaiRouter);
+
 
 module.exports = app;
