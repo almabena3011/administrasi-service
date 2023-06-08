@@ -6,7 +6,9 @@ const mahasiswaMbkmHandler = require('./handler/mahasiswambkm');
 
 
 router.post('/', verifyToken, uploadMiddleware, mahasiswaMbkmHandler.inputKelulusanMitra);
-
+router.get('/', mahasiswaMbkmHandler.getAllMahasiswaMBKM);
+router.get('/:batchId/allmahasiswa', mahasiswaMbkmHandler.getAllMahasiswaMBKMByBatchId);
+router.get('/:id', mahasiswaMbkmHandler.getDetailMahasiswaMBKM);
 
 
 module.exports = router;
