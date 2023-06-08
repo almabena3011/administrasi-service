@@ -22,6 +22,10 @@ module.exports = {
         type: Sequelize.ENUM('Magang', 'Studi Independen'),
         allowNull: false,
       },
+      nama_kegiatan: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       mitra: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -41,6 +45,11 @@ module.exports = {
       tanggal_berakhir: {
         type: Sequelize.DATE,
         allowNull: false
+      },
+      is_assigned_to_pembimbing: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
       },
       createdAt: {
         type: Sequelize.DATE,

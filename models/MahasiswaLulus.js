@@ -23,6 +23,10 @@ module.exports = (sequelize) => {
                 type: DataTypes.INTEGER,
                 allowNull: false,
             },
+            nama_kegiatan: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
             jenis_mbkm: {
                 type: DataTypes.ENUM('Magang', 'Studi Independen'),
                 allowNull: false,
@@ -46,6 +50,11 @@ module.exports = (sequelize) => {
             tanggal_berakhir: {
                 type: DataTypes.DATE,
                 allowNull: false
+            },
+            is_assigned_to_pembimbing: {
+                type: DataTypes.BOOLEAN,
+                allowNull: false,
+                defaultValue: false
             },
             createdAt: {
                 type: DataTypes.DATE,
