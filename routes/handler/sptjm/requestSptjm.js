@@ -15,11 +15,13 @@ const schema = {
 const validate = new Validator().compile(schema);
 
 module.exports = async (req, res) => {
+    req.body.proposalId = parseInt(req.body.proposalId);
     const validationResult = validate(req.body);
     if (Array.isArray(validationResult)) {
         return res.status(400).json({ errors: validationResult });
     }
     const { userId, proposalId, nama_lengkap, no_wa, nama_ot_ttd, nik, email } = req.body;
+    console.log(req.body);
     try {
         const mahasiswa = await getMahasiswaByAuthId(userId);
         console.log(mahasiswa);
