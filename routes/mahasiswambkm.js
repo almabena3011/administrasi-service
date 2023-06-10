@@ -9,6 +9,7 @@ router.post('/', verifyToken, uploadMiddleware, mahasiswaMbkmHandler.inputKelulu
 router.get('/', mahasiswaMbkmHandler.getAllMahasiswaMBKM);
 router.get('/:batchId/allmahasiswa', mahasiswaMbkmHandler.getAllMahasiswaMBKMByBatchId);
 router.get('/:id', mahasiswaMbkmHandler.getDetailMahasiswaMBKM);
+router.put('/:id', verifyToken, uploadMiddleware, mahasiswaMbkmHandler.updateDetailMahasiswaMBKM);
 
 
 module.exports = router;

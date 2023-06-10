@@ -1,9 +1,9 @@
 const { MahasiswaLulus } = require('../../../models');
 const Validator = require('fastest-validator');
-const { getMahasiswaByAuthId } = require('../userService');
+const fs = require('fs');
+
 
 const schema = {
-    batchId: { empty: false, type: "number", integer: true },
     nama_kegiatan: { empty: false, type: "string", min: 5, max: 100 },
     jenis_mbkm: { empty: false, type: "enum", values: ["Studi Independen", "Magang"] },
     mitra: { empty: false, type: "string", min: 5, max: 100 },
@@ -15,42 +15,42 @@ const schema = {
 const validate = new Validator().compile(schema);
 
 module.exports = async (req, res) => {
-    req.body.batchId = parseInt(req.body.batchId);
-
     const validationResult = validate(req.body);
     if (Array.isArray(validationResult)) {
         return res.status(400).json({ errors: validationResult });
     }
-
-
-    const { batchId, nama_kegiatan, jenis_mbkm, mitra, tempat_pelaksanaan, tanggal_mulai, tanggal_berakhir } = req.body;
-    const filepath = req.file.path;
-    const userId = req.user.data.user.id;
-
-    console.log("Formatted tanggal_mulai:", tanggal_mulai);
-    console.log("Formatted tanggal_berakhir:", tanggal_berakhir);
+    let path = '';
+    const { nama_kegiatan, jenis_mbkm, mitra, tempat_pelaksanaan, tanggal_mulai, tanggal_berakhir, oldfilepath } = req.body;
+    console.log(oldfilepath);
+    if (req.file) {
+        fs.unlink(oldfilepath, (err) => {
+            if (err) {
+                console.error('An error occurred while deleting the old file:', err);
+            } else {
+                console.log('Old file deleted successfully');
+            }
+        });
+        path = req.file.path;
+    } else {
+        path = oldfilepath;
+    }
 
 
     try {
-        const mahasiswa = await getMahasiswaByAuthId(userId);
-        console.log(mahasiswa);
-        const mahasiswambkm = await MahasiswaLulus.create({
-            mahasiswaId: mahasiswa.id,
-            batchId: batchId,
-            nama_mahasiswa: mahasiswa.nama,
-            prodi: mahasiswa.Prodi.nama_prodi,
-            nama_kegiatan: nama_kegiatan,
-            jenis_mbkm: jenis_mbkm,
-            mitra: mitra,
-            tempat_pelaksanaan: tempat_pelaksanaan,
-            bukti_kelulusan_path: filepath,
-            tanggal_mulai: tanggal_mulai,
-            tanggal_berakhir: tanggal_berakhir
-        });
-
-        return res.status(201).json({
+        const id = req.params.id;
+        const mahasiswambkm = await MahasiswaLulus.findByPk(id);
+        mahasiswambkm.nama_kegiatan = nama_kegiatan;
+        mahasiswambkm.jenis_mbkm = jenis_mbkm;
+        mahasiswambkm.mitra = mitra;
+        mahasiswambkm.tempat_pelaksanaan = tempat_pelaksanaan;
+        mahasiswambkm.bukti_kelulusan_path = path;
+        mahasiswambkm.tanggal_mulai = tanggal_mulai;
+        mahasiswambkm.tanggal_berakhir = tanggal_berakhir;
+        await mahasiswambkm.save();
+        return res.status(200).json({
             status: 'success',
-            data: mahasiswambkm
+            data: mahasiswambkm,
+            messsage: 'Mahasiswa MBKM succesfully updated'
         });
     } catch (error) {
         console.log(error);

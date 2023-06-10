@@ -4,7 +4,7 @@ const { URL_SERVICE_USER } = process.env;
 
 async function getMahasiswaByAuthId(userId) {
     try {
-        const response = await axios.get(`${URL_SERVICE_USER}/mahasiswa/${userId}`);
+        const response = await axios.get(`${URL_SERVICE_USER}/mahasiswa/${userId}/byuserid`);
         if (!response.data) {
             throw new Error('Mahasiswa not found');
         }

@@ -23,6 +23,14 @@ module.exports = (sequelize) => {
                 type: DataTypes.INTEGER,
                 allowNull: false,
             },
+            nama_mahasiswa: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
+            prodi: {
+                type: DataTypes.STRING,
+                allowNull: true,
+            },
             nama_kegiatan: {
                 type: DataTypes.STRING,
                 allowNull: false,

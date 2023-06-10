@@ -53,7 +53,9 @@ const uploadMiddleware = (req, res, next) => {
         // Check if no file was received
         if (!req.file) {
             console.log("No file received");
-            return res.status(400).json("Tidak ada file yang diterima");
+            if (req.method === 'POST') {
+                return res.status(400).json('Tidak ada file diterima');
+            }
         }
         console.log('berhasil melewati middleware');
         next();

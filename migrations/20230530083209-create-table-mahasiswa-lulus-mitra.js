@@ -14,6 +14,14 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
+      nama_mahasiswa: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      prodi: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
       batchId: {
         type: Sequelize.INTEGER,
         allowNull: false,
