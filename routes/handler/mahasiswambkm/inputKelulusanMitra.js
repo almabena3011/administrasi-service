@@ -33,7 +33,6 @@ module.exports = async (req, res) => {
 
     try {
         const mahasiswa = await getMahasiswaByAuthId(userId);
-        console.log(mahasiswa);
         const mahasiswambkm = await MahasiswaLulus.create({
             mahasiswaId: mahasiswa.id,
             batchId: batchId,
