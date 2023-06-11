@@ -6,7 +6,6 @@ module.exports = async (req, res) => {
         const proposals = await Proposal.findAll({
             where: {
                 mahasiswaId: mahasiswaId,
-                is_suratrekomendasi_generated: true
             }
         });
         res.status(200).json({
