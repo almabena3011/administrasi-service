@@ -62,16 +62,17 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: true,
       },
-      surat_rekomendasi_path: {
-        type: Sequelize.STRING,
-        allowNull: true,
-      },
       status_approval: {
         type: Sequelize.ENUM('Menunggu', 'Ditolak', 'Disetujui'),
         allowNull: false,
         defaultValue: 'Menunggu'
       },
       is_suratrekomendasi_generated: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
+      },
+      is_sptjm_generated: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
         defaultValue: false

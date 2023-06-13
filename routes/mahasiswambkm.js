@@ -10,6 +10,7 @@ router.get('/', mahasiswaMbkmHandler.getAllMahasiswaMBKM);
 router.get('/:batchId/allmahasiswa', mahasiswaMbkmHandler.getAllMahasiswaMBKMByBatchId);
 router.get('/:id', mahasiswaMbkmHandler.getDetailMahasiswaMBKM);
 router.get('/:id/unduh-bukti-kelulusan', mahasiswaMbkmHandler.unduhBukti);
+router.put('/:id/assigntrue', mahasiswaMbkmHandler.assignTrue);
 router.put('/:id', verifyToken, uploadMiddleware, mahasiswaMbkmHandler.updateDetailMahasiswaMBKM);
 
 

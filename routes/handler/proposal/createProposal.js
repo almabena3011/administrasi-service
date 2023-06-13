@@ -51,6 +51,7 @@ module.exports = async (req, res) => {
             data: proposal
         });
     } catch (error) {
+        console.log(error.message);
         if (error.message === 'Mahasiswa not found') {
             res.status(404).json({
                 error: 'Mahasiswa not found'
@@ -58,7 +59,7 @@ module.exports = async (req, res) => {
         } else if (error.message === 'User service is not available') {
             res.status(500).json({ error: 'User service is not available' });
         } else {
-            res.status(500).json({ error: 'ERROR OI' });
+            res.status(500).json({ error: error.message });
         }
     }
 }

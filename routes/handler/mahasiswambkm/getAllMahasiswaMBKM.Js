@@ -2,7 +2,16 @@ const { MahasiswaLulus } = require('../../../models');
 
 module.exports = async (req, res) => {
     try {
-        const mahasiswambkms = await MahasiswaLulus.findAll();
+
+        let filter = {};
+        if (req.query.is_assign === 'true') {
+            filter.is_assigned_to_pembimbing = true;
+        }
+
+        const mahasiswambkms = await MahasiswaLulus.findAll({
+            where: filter
+        });
+
         return res.status(200).json({
             status: 'success',
             data: mahasiswambkms

@@ -4,6 +4,7 @@ const getAllMahasiswaMBKMByBatchId = require('./getAllMahasiswaMBKMByBatchId');
 const getDetailMahasiswaMBKM = require('./getDetailMahasiswaMBKM');
 const updateDetailMahasiswaMBKM = require('./updateDetailMahasiswaMBKM');
 const unduhBukti = require('./unduhBukti');
+const assignTrue = require('./assignTrue');
 
 module.exports = {
     inputKelulusanMitra,
@@ -11,5 +12,6 @@ module.exports = {
     getAllMahasiswaMBKMByBatchId,
     getDetailMahasiswaMBKM,
     updateDetailMahasiswaMBKM,
-    unduhBukti
+    unduhBukti,
+    assignTrue
 }

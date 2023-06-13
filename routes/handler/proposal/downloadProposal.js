@@ -19,7 +19,7 @@ module.exports = async (req, res) => {
 
 
     } catch (error) {
-        console.error(error); // Print error to console for debugging
+        console.error(error.message); // Print error to console for debugging
         return res.status(500).json({
             status: 'error',
             message: 'An error occurred while processing your request',
