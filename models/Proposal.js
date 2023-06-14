@@ -67,12 +67,21 @@ module.exports = (sequelize) => {
                 type: DataTypes.STRING,
                 allowNull: true,
             },
+            transkrip_path: {
+                type: DataTypes.STRING,
+                allowNull: true,
+            },
             status_approval: {
                 type: DataTypes.ENUM('Menunggu', 'Ditolak', 'Disetujui'),
                 allowNull: false,
                 defaultValue: 'Menunggu'
             },
             is_suratrekomendasi_generated: {
+                type: DataTypes.BOOLEAN,
+                allowNull: false,
+                defaultValue: false
+            },
+            is_transkrip_generated: {
                 type: DataTypes.BOOLEAN,
                 allowNull: false,
                 defaultValue: false

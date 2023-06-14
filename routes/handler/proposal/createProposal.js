@@ -30,7 +30,6 @@ module.exports = async (req, res) => {
 
     try {
         const mahasiswa = await getMahasiswaByAuthId(userId);
-        console.log(mahasiswa);
         const proposal = await Proposal.create({
             mahasiswaId: mahasiswa.id,
             batchId: batchId,

@@ -62,6 +62,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: true,
       },
+      transkrip_path: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
       status_approval: {
         type: Sequelize.ENUM('Menunggu', 'Ditolak', 'Disetujui'),
         allowNull: false,
@@ -73,6 +77,11 @@ module.exports = {
         defaultValue: false
       },
       is_sptjm_generated: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
+      },
+      is_transkrip_generated: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
         defaultValue: false

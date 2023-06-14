@@ -1,4 +1,3 @@
-const _ = require('lodash');
 const { Proposal } = require('../../../models');
 
 module.exports = async (req, res) => {

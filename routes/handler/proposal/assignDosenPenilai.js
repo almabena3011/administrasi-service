@@ -22,17 +22,17 @@ module.exports = async (req, res) => {
                 message: 'Dosen not found'
             });
         }
-        const proposal_penilais = await PenilaiProposal.findAll({
-            where: {
-                proposalId: proposalId
-            }
-        });
-        if (proposal_penilais.length === 2) {
-            return res.status(400).send({
-                status: 'error',
-                message: 'Penilai sudah lebih dari 2'
-            });
-        }
+        // const proposal_penilais = await PenilaiProposal.findAll({
+        //     where: {
+        //         proposalId: proposalId
+        //     }
+        // });
+        // if (proposal_penilais.length === 2) {
+        //     return res.status(400).send({
+        //         status: 'error',
+        //         message: 'Penilai sudah lebih dari 2'
+        //     });
+        // }
         const proposal_penilai = await PenilaiProposal.findOne({
             where: {
                 proposalId: proposalId,
