@@ -27,7 +27,7 @@ app.use('/proposal', proposalRouter);
 app.use('/document', documentRouter);
 app.use('/penilai', penilaiRouter);
 app.use('/sptjm', sptjmRouter);
-app.use('/transkip_nilai', transkripNilaiRouter);
+app.use('/transkrip_nilai', transkripNilaiRouter);
 app.use('/mahasiswambkm', mahasiswaMbkmRouter);
 
 module.exports = app;

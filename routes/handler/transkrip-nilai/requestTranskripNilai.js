@@ -1,34 +1,25 @@
-const { TranskripNilai } = require('../../../models');
-const { getMahasiswaByAuthId } = require('../userService');
+const { Proposal } = require('../../../models');
 
 module.exports = async (req, res) => {
 
-    const { userId } = req.body;
-    console.log(userId);
+    const id = req.params.id
     try {
-        const mahasiswa = await getMahasiswaByAuthId(userId);
-        console.log(mahasiswa);
-        const transkrip_nilai = await TranskripNilai.create({
-            mahasiswaId: mahasiswa.id,
-            nama_mahasiswa: mahasiswa.nama_mahasiswa,
-            prodi: mahasiswa.Prodi.nama_prodi,
-            angkatan: mahasiswa.angkatan,
-            nim: mahasiswa.nim,
+        const proposal = await Proposal.findOne({
+            where: {
+                id: id
+            }
         });
 
-        return res.status(201).json({
+        console.log(proposal);
+        proposal.transkrip_path = req.file.path;
+        proposal.is_transkrip_generated = true;
+
+        await proposal.save();
+        return res.status(200).json({
             status: 'success',
-            data: transkrip_nilai
+            message: 'Transkrip nilai berhasil diterbitkan'
         });
     } catch (error) {
-        if (error.message === 'Mahasiswa not found') {
-            res.status(404).json({
-                error: 'Mahasiswa not found'
-            });
-        } else if (error.message === 'User service is not available') {
-            res.status(500).json({ error: 'User service is not available' });
-        } else {
-            res.status(500).json({ error: error.message });
-        }
+        res.status(500).json({ error: error.message });
     }
 }

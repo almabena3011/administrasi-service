@@ -1,14 +1,13 @@
 var express = require('express');
 var router = express.Router();
-
+const verifyToken = require('../middleware/verifyToken');
+const uploadMiddleware = require('./multerPdfConfig');
 const transkripNilaiHandler = require('./handler/transkrip-nilai');
 
 
-router.post('/', transkripNilaiHandler.requestTranskripNilai);
-// router.get('/:mahasiswaId/allrequestedtranskripNilai', transkripNilaiHandler.getAllRequestedTranskripNilaiByMahasiswaId);
-// router.get('/', transkripNilaiHandler.getAllRequestedTranskripNilai);
-// router.put('/:id/kirim-transkrip', transkripNilaiHandler.generatetranskripNilai);
-// router.get('/:id/download-transkripNilai', transkripNilaiHandler.downloadtranskripNilai);
+router.put('/:id', verifyToken, uploadMiddleware, transkripNilaiHandler.requestTranskripNilai);
+router.get('/:id/unduh-transkrip', transkripNilaiHandler.unduhTranskripNilai);
+
 
 
 
