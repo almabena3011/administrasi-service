@@ -23,6 +23,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+
+
 app.use('/proposal', proposalRouter);
 app.use('/document', documentRouter);
 app.use('/penilai', penilaiRouter);
