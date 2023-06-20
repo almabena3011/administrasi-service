@@ -2,21 +2,23 @@ const fs = require('fs').promises;
 const path = require('path');
 const puppeteer = require('puppeteer');
 const _ = require('lodash');
-const { Proposal, Sptjm } = require('../../../models');
-const { getMahasiswaByAuthId } = require('../userService');
+const { Proposal } = require('../../../models');
+const { getMahasiswaById } = require('../userService');
 
 module.exports = async (req, res) => {
     let browser;
     try {
         const id = req.params.id;
         const proposal = await Proposal.findByPk(id);
+        console.log(proposal);
         if (!proposal) {
             return res.status(404).json({
                 status: 'error',
                 message: 'Proposal not found'
             });
         }
-        const mahasiswa = await getMahasiswaByAuthId(proposal.mahasiswaId);
+        const mahasiswa = await getMahasiswaById(proposal.mahasiswaId);
+        console.log(mahasiswa);
         const htmlPath = path.resolve(__dirname, '../../../private/sptjm_template.html');
         const html = await fs.readFile(htmlPath, 'utf-8');
 
